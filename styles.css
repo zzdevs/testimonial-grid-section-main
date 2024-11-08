@@ -1,0 +1,162 @@
+/* barlow-semi-condensed-latin-500-normal */
+@font-face {
+  font-family: 'Barlow Semi Condensed Base';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/barlow-semi-condensed@latest/latin-500-normal.woff2)
+      format('woff2'),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/barlow-semi-condensed@latest/latin-500-normal.woff)
+      format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* barlow-semi-condensed-latin-600-normal */
+@font-face {
+  font-family: 'Barlow Semi Condensed Bold';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/barlow-semi-condensed@latest/latin-600-normal.woff2)
+      format('woff2'),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/barlow-semi-condensed@latest/latin-600-normal.woff)
+      format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /*Primary*/
+  --Moderate-violet: hsl(263, 55%, 52%);
+  --Very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --Very-dark-blackish-blue: hsl(219, 29%, 14%);
+  --White: hsl(0, 0%, 100%);
+  /*Neutral*/
+  --Light-gray: hsl(0, 0%, 81%);
+  --Light-grayish-blue: hsl(210, 46%, 95%);
+}
+html {
+  font-size: 13px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100dvh;
+  background-color: var(--Light-grayish-blue);
+  display: grid;
+  grid-template-rows: 1fr 10vh;
+  align-items: center;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  font-family: 'Barlow Semi Condensed Base';
+  color: var(--White);
+  object-fit: contain;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-template-areas: 'one' 'two' 'three' 'four' 'five';
+  place-content: center;
+  gap: 2rem;
+}
+
+article {
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  box-shadow: 0px 2px 12px var(--Very-dark-grayish-blue);
+  overflow: hidden;
+  cursor: default;
+}
+article .user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+article .user img {
+  height: 30px;
+  border-radius: 50%;
+}
+.state {
+  opacity: 0.5;
+}
+article .introduction {
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
+article .review {
+  opacity: 0.7;
+}
+.quotes {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  align-self: start;
+  justify-self: end;
+  grid-area: one;
+  z-index: 1;
+
+  margin: 0 2rem;
+}
+.content {
+  max-width: 100%;
+  position: relative;
+  z-index: 2;
+  grid-area: one;
+}
+article.one {
+  grid-area: one;
+  background-color: var(--Moderate-violet);
+}
+article.two {
+  grid-area: two;
+  background-color: var(--Very-dark-grayish-blue);
+}
+article.three {
+  grid-area: three;
+  background-color: var(--White);
+  color: black;
+}
+article.four {
+  grid-area: four;
+  background-color: var(--Very-dark-blackish-blue);
+}
+article.five {
+  grid-area: five;
+  background-color: var(--White);
+  color: black;
+}
+
+@media (width > 700px) {
+  .container {
+    max-width: none;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-template-rows: repeat(auto-fill, 0.5fr);
+    grid-template-areas: 'one one' 'two four' 'three four' 'five five';
+    padding: 6rem;
+  }
+}
+@media (width > 1000px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-areas: 'one one two five' 'three four four five';
+  }
+}
